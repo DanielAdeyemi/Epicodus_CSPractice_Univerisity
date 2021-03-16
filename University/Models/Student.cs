@@ -1,4 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace University.Models
 {
@@ -13,7 +17,7 @@ namespace University.Models
     [Required]
     public string Name { get; set; }
 
-    [Column(TypeName = "timestamp")]
+    // [Column(TypeName = "timestamp")]
     public DateTime Enroll { get; set; }
 
     public virtual ICollection<StudentLesson> JoinEntities { get; }

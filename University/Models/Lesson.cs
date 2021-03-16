@@ -1,4 +1,8 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace University.Models
 {
@@ -14,6 +18,6 @@ namespace University.Models
     public string LessonName { get; set; }
     public string LessonNumber { get; set; }
 
-    public virtual ICollection<CategoryItem> JoinEntities { get; set; }
+    public virtual ICollection<StudentLesson> JoinEntities { get; set; }
   }
 }
