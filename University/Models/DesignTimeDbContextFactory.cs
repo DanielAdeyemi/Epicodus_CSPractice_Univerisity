@@ -11,7 +11,7 @@ namespace University.Models
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("appsetting.json")
+        .AddJsonFile("appsettings.json")
         .Build();
       var builder = new DbContextOptionsBuilder<UniversityContext>();
       builder.UseMySql(configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(configuration["ConnectionStrings:DefaultConnection"]));
