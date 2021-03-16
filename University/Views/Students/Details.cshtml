@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@model University.Models.Student;
+
+<h3>Courses for @Model.Name</h3>
+
+@if (@Model.JoinEntities.Count == 0)
+{
+  <h4>No courses for this student yet</h4>
+}
+else
+{
+  <h5>Courses taken:</h5>
+  <ul>
+  @foreach (var join in Model.JoinEntities)
+  {
+    <li>@join.Lesson.LessonName</li>
+  }
+  </ul>
+}
+
+<button class="btn btn-dark">@Html.ActionLink("Back to all students", "Index")</button>
+<button class="btn btn-dark">@Html.ActionLink("Add courses", "Create", "Lessons")</button>
+<button class="btn btn-dark">@Html.ActionLink("To the main page", "Index", "Home")</button>
