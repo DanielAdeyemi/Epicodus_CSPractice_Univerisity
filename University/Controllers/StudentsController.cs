@@ -19,5 +19,14 @@ namespace University.Controllers
     {
       return View(_db.Students.ToList());
     }
+
+    public ActionResult Details(int id)
+    {
+      Student thisStudent = _db.Students
+        .Include(student=>student.JoinEntities)
+        .ThenInclude(join=>join.Lesson)
+        .FirstOrDefault(student =>student.StudentId == id);
+      return View(thisStudent);
+    }
   }
 }
