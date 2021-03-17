@@ -17,7 +17,8 @@ namespace University.Controllers
 
     public ActionResult Index()
     {
-      return View(_db.Students.ToList());
+      List<Student> model = _db.Students.ToList();
+      return View(model);
     }
 
     public ActionResult Details(int id)
@@ -36,16 +37,15 @@ namespace University.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Student student, int LessonId)
+    public ActionResult Create(Student student)
     {
-      _db.Students.Add(student);
-      _db.SaveChanges();
-      if (LessonId != 0)
+      if(ModelState.IsValid)
       {
-        _db.StudentLesson.Add(new StudentLesson() { LessonId = LessonId, StudentId = student.StudentId });
+        _db.Students.Add(student);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
       }
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      return View(student);
     }
   }
 }

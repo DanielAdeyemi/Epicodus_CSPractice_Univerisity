@@ -14,7 +14,7 @@ namespace University.Models
     }
 
     public int StudentId { get; set; }
-    [Required]
+    [Required(ErrorMessage="Name is required")]
     public string Name { get; set; }
 
     // [Column(TypeName = "timestamp")]
